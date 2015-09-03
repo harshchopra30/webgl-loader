@@ -1,0 +1,103 @@
+{
+  "materials": {
+    "material_0": { "map_Kd": "vdubey.png" }
+  },
+  "decodeParams": {
+    "decodeOffsets": [-3171,-3180,-8065,0,0,-511,-511,-511],
+    "decodeScales": [0.000113,0.000113,0.000113,0.000978,0.000978,0.001957,0.001957,0.001957]
+  }, "urls": {
+    "84640da4.vdubey.uf8": [
+      { "material": "material_0",
+        "attribRange": [0, 55294],
+        "indexRange": [442352, 57855],
+        "bboxes": 9876997,
+        "names": ["default" ],
+        "lengths": [173565 ]
+      },      { "material": "material_0",
+        "attribRange": [615917, 55294],
+        "indexRange": [1058269, 75152],
+        "bboxes": 9877003,
+        "names": ["default" ],
+        "lengths": [225456 ]
+      },      { "material": "material_0",
+        "attribRange": [1283725, 55294],
+        "indexRange": [1726077, 80856],
+        "bboxes": 9877009,
+        "names": ["default" ],
+        "lengths": [242568 ]
+      },      { "material": "material_0",
+        "attribRange": [1968645, 55294],
+        "indexRange": [2410997, 77056],
+        "bboxes": 9877015,
+        "names": ["default" ],
+        "lengths": [231168 ]
+      },      { "material": "material_0",
+        "attribRange": [2642165, 55294],
+        "indexRange": [3084517, 77997],
+        "bboxes": 9877021,
+        "names": ["default" ],
+        "lengths": [233991 ]
+      },      { "material": "material_0",
+        "attribRange": [3318508, 55294],
+        "indexRange": [3760860, 74153],
+        "bboxes": 9877027,
+        "names": ["default" ],
+        "lengths": [222459 ]
+      },      { "material": "material_0",
+        "attribRange": [3983319, 55294],
+        "indexRange": [4425671, 76650],
+        "bboxes": 9877033,
+        "names": ["default" ],
+        "lengths": [229950 ]
+      },      { "material": "material_0",
+        "attribRange": [4655621, 55294],
+        "indexRange": [5097973, 76258],
+        "bboxes": 9877039,
+        "names": ["default" ],
+        "lengths": [228774 ]
+      },      { "material": "material_0",
+        "attribRange": [5326747, 55294],
+        "indexRange": [5769099, 76753],
+        "bboxes": 9877045,
+        "names": ["default" ],
+        "lengths": [230259 ]
+      },      { "material": "material_0",
+        "attribRange": [5999358, 55296],
+        "indexRange": [6441726, 68634],
+        "bboxes": 9877051,
+        "names": ["default" ],
+        "lengths": [205902 ]
+      },      { "material": "material_0",
+        "attribRange": [6647628, 55294],
+        "indexRange": [7089980, 70798],
+        "bboxes": 9877057,
+        "names": ["default" ],
+        "lengths": [212394 ]
+      },      { "material": "material_0",
+        "attribRange": [7302374, 55294],
+        "indexRange": [7744726, 71983],
+        "bboxes": 9877063,
+        "names": ["default" ],
+        "lengths": [215949 ]
+      },      { "material": "material_0",
+        "attribRange": [7960675, 55294],
+        "indexRange": [8403027, 72579],
+        "bboxes": 9877069,
+        "names": ["default" ],
+        "lengths": [217737 ]
+      },      { "material": "material_0",
+        "attribRange": [8620764, 55294],
+        "indexRange": [9063116, 77483],
+        "bboxes": 9877075,
+        "names": ["default" ],
+        "lengths": [232449 ]
+      },      { "material": "material_0",
+        "attribRange": [9295565, 46654],
+        "indexRange": [9668797, 69400],
+        "bboxes": 9877081,
+        "names": ["default" ],
+        "lengths": [208200 ]
+      }    ]
+
+  }
+}

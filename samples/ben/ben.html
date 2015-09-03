@@ -1,0 +1,194 @@
+<!doctype html>
+<html> <head>
+<link rel="stylesheet" type="text/css" href="..\samples.css">
+<title>WebGL Loader Samples</title>
+</head>
+<body>
+
+<div id="canvas1" class="full"></div>
+
+<span class="backdrop full" style="z-Index:-2;"></span>
+
+<script type="text/javascript" src="..\..\..\three.js\three.js"></script>
+<script type="text/javascript" src="..\..\..\three.js\src\Detector.js"></script>
+<script type="text/javascript" src="..\..\..\three.js\src\loaders/SceneLoader.js"></script>
+<script type="text/javascript" src= "..\..\..\three.js\src\extras/helpers/boundingboxhelper.js"></script>
+<script type="text/javascript" src="..\..\..\three.js\src\controls/TransformControls.js"></script>
+<script type="text/javascript" src="..\..\..\jquery\jquery-1.11.2.js"></script>
+<script type="text/javascript" src="..\..\..\three.js\src\controls\TrackballControls.js"></script>
+
+<script type="text/javascript" src="loader.js"></script>
+<script type="text/javascript">
+	// XMLHttpRequest stuff.
+
+	function addListeners(dom, listeners) {
+  // TODO: handle event capture, object binding.
+	  for (var key in listeners) {
+	    dom.addEventListener(key, listeners[key]);
+	  }
+	}
+
+	function removeListeners(dom, listeners) {
+	  // TODO: handle event capture, object binding.
+	  for (var key in listeners) {
+	    dom.removeEventListener(key, listeners[key]);
+	  }
+	}
+
+	function getHttpRequest(url, onload, opt_onprogress) {
+	  var LISTENERS = {
+	    load: function(e) { onload(req, e); },
+	    progress: function(e) { opt_onprogress(req, e); },
+  	};
+
+
+  var req = new XMLHttpRequest();
+  addListeners(req, LISTENERS);
+  req.open('GET', url, true);
+  req.send(null);
+}
+
+function getJsonRequest(url, onjson) {
+  getHttpRequest(url,
+                 function(e) { 
+                  onjson(JSON.parse(e.responseText)); 
+                },
+                 function() {});
+}
+
+	var _camera, _scene, _renderer,_canvas,_controlsTrackBall;
+	function _render(){
+		if(_renderer != null){
+			_renderer.render(_scene,_camera);
+		}
+		
+	}
+	var _animate = function(){
+		requestAnimationFrame( _animate );
+		
+		if(_controlsTrackBall != null)
+				_controlsTrackBall.update();
+		
+	};
+	var _meshes = [];
+	var _container = document.getElementById('canvas1');
+	
+	function _setup(){
+		var PERSPECTIVE_DIST = 2000;
+
+		_camera = new THREE.PerspectiveCamera( 60, $(_container).width() /$(_container).height(), 1, PERSPECTIVE_DIST );
+		_camera.position.set(0, 0, 10);
+		_camera.lookAt(new THREE.Vector3(0,0,0));
+
+		_scene = new THREE.Scene();
+		_scene.add( new THREE.AmbientLight( 0xcccccc ) );
+		var lightPoint = new THREE.DirectionalLight(  0xffffff, 1);
+		var dir = new THREE.Vector3(1, 20 ,1 );
+		lightPoint.position = dir;
+		_scene.add(lightPoint  );
+		_renderer = new THREE.WebGLRenderer({ antialias: true , alpha: true});
+		
+		_controlsTrackBall = new THREE.TrackballControls( _camera );
+
+		_controlsTrackBall.rotateSpeed = 1.0;
+		_controlsTrackBall.zoomSpeed = 1.2;
+		_controlsTrackBall.panSpeed = 0.8;
+		_controlsTrackBall.noZoom = false;
+		_controlsTrackBall.noPan = false;
+		_controlsTrackBall.staticMoving = true;
+		_controlsTrackBall.dynamicDampingFactor = 0.3;
+		_controlsTrackBall.keys = [ 65, 83, 68 ];
+		_controlsTrackBall.addEventListener( 'change', _render );
+
+		//_renderer.setPixelRatio( _container.devicePixelRatio );
+		_renderer.setSize( $(_container).width(), $(_container).height());
+		
+		//_container.style.background = 'url(' + _container.toDataURL('image/png') + ')';
+		//_container.style.backgroundSize = '32px 100%';
+		_container.appendChild( _renderer.domElement );
+		
+		_animate();
+		
+	}
+
+	
+	_setup();
+
+	var MATERIALS ;
+	function textureFromMaterial(gl, material, callback) {
+	  try {
+	    var url = MATERIALS[material].map_Kd;  // throw-y.
+	    if (url === undefined) {
+	      throw url;
+	    }
+	    return textureFromUrl(gl, url, callback);
+	  } catch (e) {
+	    var color;
+	    try {
+	      color = new Uint8Array(MATERIALS[material].Kd);
+	    } catch (e) {
+	      color = new Uint8Array([255, 255, 255]);
+	    }
+	    var texture = textureFromArray(gl, 1, 1, color);
+	    callback(gl, texture);
+	    return texture;
+	  }
+	}
+
+	function onLoad(attribArray, indexArray, bboxen, meshEntry) {
+
+		var len = attribArray.length / 8,
+			positions = new Float32Array(len * 3),
+			uvs = new Float32Array(len * 2) ,
+			normals = new Float32Array(len * 3),
+			numVerts = 0,
+			numNormals = 0,
+			numUVs = 0,
+			geometry = new THREE.BufferGeometry();
+
+		for (var i = 0; i < attribArray.length; i += 8) {
+			positions[numVerts++] = attribArray[i];
+			positions[numVerts++] = attribArray[i+1];
+			positions[numVerts++] = attribArray[i+2];
+			uvs[numUVs++] = attribArray[i+3];
+			uvs[numUVs++] = attribArray[i+4];
+			normals[numNormals++] = attribArray[i+5];
+			normals[numNormals++] = attribArray[i+6];
+			normals[numNormals++] = attribArray[i+7];
+		}
+
+	 
+	  	geometry.addAttribute( 'index', new THREE.BufferAttribute( indexArray, 1 ) );
+		geometry.addAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
+		geometry.addAttribute( 'normal', new THREE.BufferAttribute( normals, 3 ) );
+		geometry.addAttribute( 'uv', new THREE.BufferAttribute( uvs, 2 ) );
+		geometry.computeBoundingBox();
+		geometry.computeVertexNormals();
+		geometry.computeBoundingSphere();
+	
+		
+		var url = MATERIALS[meshEntry.material].map_Kd;  // throw-y.
+		var map = THREE.ImageUtils.loadTexture(url, THREE.UVMapping, function() {
+			_render();
+		});
+		
+		var material = new THREE.MeshPhongMaterial( {specular: 0x009900, shininess: 30, shading: THREE.FlatShading, map:map } );
+			// var geometryBox = new THREE.BoxGeometry(200,200,200);
+			//var meshBox = new THREE.Mesh( geometryBox, material );	
+			// meshBox.position.set(0, 0,0);
+			var mesh = new THREE.Mesh( geometry, material );
+			mesh.position.set(0, 0,0);
+			_scene.add(mesh); 	
+			
+
+}
+
+
+downloadModelJson('ben.json', DEFAULT_DECODE_PARAMS, onLoad);
+
+
+
+</script>
+
+</body></html>
+

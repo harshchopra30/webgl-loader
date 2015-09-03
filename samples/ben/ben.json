@@ -1,0 +1,199 @@
+{
+  "materials": {
+    "gums": { "map_Kd": "James_Mouth_Gum_Lores.bmp" },
+    "tongue": { "map_Kd": "James_Tongue_Lores.bmp" },
+    "teethbottom": { "Kd": [251, 248, 248] },
+    "teethtop": { "Kd": [251, 248, 248] },
+    "topeyelashes": { "Kd": [66, 52, 42] },
+    "bottomeyelashes": { "Kd": [66, 52, 42] },
+    "head": { "map_Kd": "James_Face_Color_Hair_Lores.bmp" },
+    "eyetrans": { "Kd": [0, 0, 0] },
+    "pupil": { "Kd": [1, 1, 1] },
+    "iris": { "map_Kd": "James_Eye_Inner_Green.bmp" },
+    "eyeball": { "map_Kd": "James_Eye_Green.bmp" },
+    "pants": { "map_Kd": "MJeans1TEX_Lores.bmp" },
+    "tshirt3": { "map_Kd": "MTshirt3TEX_Lores.bmp" },
+    "skinbody": { "map_Kd": "James_Body_Lores.bmp" },
+    "fingernails": { "map_Kd": "Nail_Hand_01_Lores.bmp" },
+    "soleshoe": { "map_Kd": "MCasShoe1TEX_Lores.bmp" },
+    "sole": { "map_Kd": "MCasShoe1TEX_Lores.bmp" },
+    "laces": { "map_Kd": "MCasShoe1TEX_Lores.bmp" },
+    "bow": { "map_Kd": "MCasShoe1TEX_Lores.bmp" }
+  },
+  "decodeParams": {
+    "decodeOffsets": [-2533,-149,-6225,0,0,-511,-511,-511],
+    "decodeScales": [0.000043,0.000043,0.000043,0.000978,0.000978,0.001957,0.001957,0.001957]
+  }, "urls": {
+    "9cde3ebb.ben.utf8": [
+      { "material": "bottomeyelashes",
+        "attribRange": [0, 130],
+        "indexRange": [1040, 192],
+        "bboxes": 1616,
+        "names": ["figure_1" ],
+        "lengths": [576 ]
+      }    ]
+,
+    "554a7d9d.ben.utf8": [
+      { "material": "bow",
+        "attribRange": [0, 1848],
+        "indexRange": [14784, 3224],
+        "bboxes": 24456,
+        "names": ["figure_1", "figure_1" ],
+        "lengths": [4836, 4836 ]
+      }    ]
+,
+    "df6e3450.ben.utf8": [
+      { "material": "eyeball",
+        "attribRange": [0, 3834],
+        "indexRange": [30672, 7284],
+        "bboxes": 52524,
+        "names": ["figure_1", "figure_1" ],
+        "lengths": [10926, 10926 ]
+      }    ]
+,
+    "956f94a7.ben.utf8": [
+      { "material": "eyetrans",
+        "attribRange": [0, 5248],
+        "indexRange": [41984, 9964],
+        "bboxes": 71876,
+        "names": ["figure_1", "figure_1" ],
+        "lengths": [14946, 14946 ]
+      }    ]
+,
+    "f59dc973.ben.utf8": [
+      { "material": "fingernails",
+        "attribRange": [0, 1023],
+        "indexRange": [8184, 1228],
+        "bboxes": 11868,
+        "names": ["figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1" ],
+        "lengths": [306, 378, 354, 402, 402, 306, 378, 354, 402, 402 ]
+      }    ]
+,
+    "07182ddf.ben.utf8": [
+      { "material": "gums",
+        "attribRange": [0, 1446],
+        "indexRange": [11568, 2624],
+        "bboxes": 19440,
+        "names": ["figure_1" ],
+        "lengths": [7872 ]
+      }    ]
+,
+    "b325e953.ben.utf8": [
+      { "material": "head",
+        "attribRange": [0, 2219],
+        "indexRange": [17752, 4168],
+        "bboxes": 30256,
+        "names": ["figure_1", "figure_1" ],
+        "lengths": [288, 12216 ]
+      }    ]
+,
+    "000340d7.ben.utf8": [
+      { "material": "iris",
+        "attribRange": [0, 902],
+        "indexRange": [7216, 1664],
+        "bboxes": 12208,
+        "names": ["figure_1", "figure_1" ],
+        "lengths": [2496, 2496 ]
+      }    ]
+,
+    "b056b6ff.ben.utf8": [
+      { "material": "laces",
+        "attribRange": [0, 1016],
+        "indexRange": [8128, 1792],
+        "bboxes": 13504,
+        "names": ["figure_1", "figure_1" ],
+        "lengths": [2688, 2688 ]
+      }    ]
+,
+    "673154a3.ben.utf8": [
+      { "material": "pants",
+        "attribRange": [0, 8200],
+        "indexRange": [65600, 15293],
+        "bboxes": 111479,
+        "names": ["figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1" ],
+        "lengths": [4233, 10548, 6675, 3501, 10746, 6675, 3501 ]
+      }    ]
+,
+    "1c78263f.ben.utf8": [
+      { "material": "pupil",
+        "attribRange": [0, 148],
+        "indexRange": [1184, 288],
+        "bboxes": 2048,
+        "names": ["figure_1", "figure_1" ],
+        "lengths": [432, 432 ]
+      }    ]
+,
+    "c8c6712e.ben.utf8": [
+      { "material": "skinbody",
+        "attribRange": [0, 4990],
+        "indexRange": [39920, 7830],
+        "bboxes": 63410,
+        "names": ["figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1" ],
+        "lengths": [408, 534, 1755, 486, 510, 624, 558, 468, 810, 558, 465, 813, 558, 465, 771, 546, 435, 822, 534, 1755, 486, 414, 720, 558, 468, 810, 558, 465, 813, 558, 465, 771, 540, 435, 828, 363, 363 ]
+      }    ]
+,
+    "774e7d9b.ben.utf8": [
+      { "material": "sole",
+        "attribRange": [0, 2588],
+        "indexRange": [20704, 4668],
+        "bboxes": 34708,
+        "names": ["figure_1", "figure_1", "figure_1", "figure_1" ],
+        "lengths": [4578, 2424, 4578, 2424 ]
+      }    ]
+,
+    "2e3fe2b9.ben.utf8": [
+      { "material": "soleshoe",
+        "attribRange": [0, 3164],
+        "indexRange": [25312, 5352],
+        "bboxes": 41368,
+        "names": ["figure_1", "figure_1", "figure_1", "figure_1" ],
+        "lengths": [5730, 2298, 5730, 2298 ]
+      }    ]
+,
+    "17b2500e.ben.utf8": [
+      { "material": "teethbottom",
+        "attribRange": [0, 1235],
+        "indexRange": [9880, 1656],
+        "bboxes": 14848,
+        "names": ["figure_1" ],
+        "lengths": [4968 ]
+      }    ]
+,
+    "9a7e7a78.ben.utf8": [
+      { "material": "teethtop",
+        "attribRange": [0, 1666],
+        "indexRange": [13328, 1816],
+        "bboxes": 18776,
+        "names": ["figure_1" ],
+        "lengths": [5448 ]
+      }    ]
+,
+    "510c45cf.ben.utf8": [
+      { "material": "tongue",
+        "attribRange": [0, 845],
+        "indexRange": [6760, 1578],
+        "bboxes": 11494,
+        "names": ["figure_1" ],
+        "lengths": [4734 ]
+      }    ]
+,
+    "3e1d62c8.ben.utf8": [
+      { "material": "topeyelashes",
+        "attribRange": [0, 130],
+        "indexRange": [1040, 192],
+        "bboxes": 1616,
+        "names": ["figure_1" ],
+        "lengths": [576 ]
+      }    ]
+,
+    "03c298a9.ben.utf8": [
+      { "material": "tshirt3",
+        "attribRange": [0, 4283],
+        "indexRange": [34264, 7216],
+        "bboxes": 55912,
+        "names": ["figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1", "figure_1" ],
+        "lengths": [2268, 972, 1572, 2802, 2160, 3456, 2802, 2160, 3456 ]
+      }    ]
+
+  }
+}

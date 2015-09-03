@@ -1,0 +1,76 @@
+{
+  "materials": {
+    "material_0": { "map_Kd": "sourabh.png" }
+  },
+  "decodeParams": {
+    "decodeOffsets": [-4087,-3003,-8166,0,0,-511,-511,-511],
+    "decodeScales": [0.000120,0.000120,0.000120,0.000978,0.000978,0.001957,0.001957,0.001957]
+  }, "urls": {
+    "sourabh1.utf8": [
+      { "material": "material_0",
+        "attribRange": [0, 55294],
+        "indexRange": [442352, 55198]
+      },
+      { "material": "material_0",
+        "attribRange": [607946, 55294],
+        "indexRange": [1050298, 77590]
+      },
+      { "material": "material_0",
+        "attribRange": [1283068, 55294],
+        "indexRange": [1725420, 77063]
+      },
+      { "material": "material_0",
+        "attribRange": [1956609, 55294],
+        "indexRange": [2398961, 80478]
+      },
+      { "material": "material_0",
+        "attribRange": [2640395, 55294],
+        "indexRange": [3082747, 78123]
+      },
+      { "material": "material_0",
+        "attribRange": [3317116, 55294],
+        "indexRange": [3759468, 81906]
+      },
+      { "material": "material_0",
+        "attribRange": [4005186, 55294],
+        "indexRange": [4447538, 74966]
+      },
+      { "material": "material_0",
+        "attribRange": [4672436, 55294],
+        "indexRange": [5114788, 74917]
+      },
+      { "material": "material_0",
+        "attribRange": [5339539, 55294],
+        "indexRange": [5781891, 77733]
+      },
+      { "material": "material_0",
+        "attribRange": [6015090, 55294],
+        "indexRange": [6457442, 69218]
+      },
+      { "material": "material_0",
+        "attribRange": [6665096, 55294],
+        "indexRange": [7107448, 69355]
+      },
+      { "material": "material_0",
+        "attribRange": [7315513, 55295],
+        "indexRange": [7757873, 71039]
+      },
+      { "material": "material_0",
+        "attribRange": [7970990, 55294],
+        "indexRange": [8413342, 68488]
+      },
+      { "material": "material_0",
+        "attribRange": [8618806, 55295],
+        "indexRange": [9061166, 74245]
+      },
+      { "material": "material_0",
+        "attribRange": [9283901, 55294],
+        "indexRange": [9726253, 77755]
+      },
+      { "material": "material_0",
+        "attribRange": [9959518, 29796],
+        "indexRange": [10197886, 45234]
+      }
+    ]
+  }
+}

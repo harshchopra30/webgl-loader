@@ -1,5 +1,5 @@
 #if 0  // A cute trick to making this .cc self-building from shell.
-g++ $0 -O2 -Wall -Werror -o `basename $0 .cc`;
+g++ $0 -O2 -Wall  -o `basename $0 .cc`;
 exit;
 #endif
 // Copyright 2011 Google Inc. All Rights Reserved.
@@ -21,7 +21,7 @@ exit;
 #include "mesh.h"
 #include "optimize.h"
 #include "stream.h"
-
+#include <ctime>
 int main(int argc, const char* argv[]) {
   FILE* json_out = stdout;
   if (argc != 3 && argc != 4) {
@@ -33,10 +33,12 @@ int main(int argc, const char* argv[]) {
     json_out = fopen(argv[3], "w");
     CHECK(json_out != NULL);
   }
-
+    time_t start = time(NULL);
   FILE* fp = fopen(argv[1], "r");
   WavefrontObjFile obj(fp);
   fclose(fp);
+    time_t endParseTime = (time(NULL));
+   printf("time for open,parse and close : %d\n",endParseTime - start );
 
   fputs("{\n  \"materials\": {\n", json_out);
   const MaterialList& materials = obj.materials();
@@ -46,7 +48,7 @@ int main(int argc, const char* argv[]) {
     fputs(",\n" + last, json_out);
   }
   fputs("  },\n", json_out);
-  
+
   const MaterialBatches& batches = obj.material_batches();
 
   // Pass 1: compute bounds.
@@ -57,7 +59,7 @@ int main(int argc, const char* argv[]) {
     const DrawBatch& draw_batch = iter->second;
     bounds.Enclose(draw_batch.draw_mesh().attribs);
   }
-  webgl_loader::BoundsParams bounds_params = 
+  webgl_loader::BoundsParams bounds_params =
       webgl_loader::BoundsParams::FromBounds(bounds);
   fputs("  \"decodeParams\": ", json_out);
   bounds_params.DumpJson(json_out);
@@ -103,7 +105,7 @@ int main(int argc, const char* argv[]) {
       const size_t num_indices = webgl_meshes[i].indices.size();
       CHECK(num_attribs % 8 == 0);
       CHECK(num_indices % 3 == 0);
-      webgl_loader::CompressQuantizedAttribsToUtf8(webgl_meshes[i].attribs, 
+      webgl_loader::CompressQuantizedAttribsToUtf8(webgl_meshes[i].attribs,
 						   &utf8_sink);
       webgl_loader::CompressIndicesToUtf8(webgl_meshes[i].indices, &utf8_sink);
       material.push_back(iter->first);
@@ -131,5 +133,6 @@ int main(int argc, const char* argv[]) {
   }
   fputs("    ]\n", json_out);
   fputs("  }\n}", json_out);
+  printf("time for open,parse and close : %d\n",time(NULL) - endParseTime );
   return 0;
 }

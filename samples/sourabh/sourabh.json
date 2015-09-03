@@ -1,0 +1,109 @@
+{
+  "materials": {
+    "material_0": { "map_Kd": "sourabh.png" }
+  },
+  "decodeParams": {
+    "decodeOffsets": [-4087,-3003,-8166,0,0,-511,-511,-511],
+    "decodeScales": [0.000120,0.000120,0.000120,0.000978,0.000978,0.001957,0.001957,0.001957]
+  }, "urls": {
+    "7f7a2623.sourabh.utf8": [
+      { "material": "material_0",
+        "attribRange": [0, 55294],
+        "indexRange": [442352, 56402],
+        "bboxes": 10268228,
+        "names": ["default" ],
+        "lengths": [169206 ]
+      },      { "material": "material_0",
+        "attribRange": [611558, 55294],
+        "indexRange": [1053910, 81085],
+        "bboxes": 10268234,
+        "names": ["default" ],
+        "lengths": [243255 ]
+      },      { "material": "material_0",
+        "attribRange": [1297165, 55294],
+        "indexRange": [1739517, 79543],
+        "bboxes": 10268240,
+        "names": ["default" ],
+        "lengths": [238629 ]
+      },      { "material": "material_0",
+        "attribRange": [1978146, 55294],
+        "indexRange": [2420498, 83265],
+        "bboxes": 10268246,
+        "names": ["default" ],
+        "lengths": [249795 ]
+      },      { "material": "material_0",
+        "attribRange": [2670293, 55295],
+        "indexRange": [3112653, 79823],
+        "bboxes": 10268252,
+        "names": ["default" ],
+        "lengths": [239469 ]
+      },      { "material": "material_0",
+        "attribRange": [3352122, 55294],
+        "indexRange": [3794474, 82994],
+        "bboxes": 10268258,
+        "names": ["default" ],
+        "lengths": [248982 ]
+      },      { "material": "material_0",
+        "attribRange": [4043456, 55294],
+        "indexRange": [4485808, 81314],
+        "bboxes": 10268264,
+        "names": ["default" ],
+        "lengths": [243942 ]
+      },      { "material": "material_0",
+        "attribRange": [4729750, 55294],
+        "indexRange": [5172102, 78139],
+        "bboxes": 10268270,
+        "names": ["default" ],
+        "lengths": [234417 ]
+      },      { "material": "material_0",
+        "attribRange": [5406519, 55295],
+        "indexRange": [5848879, 74715],
+        "bboxes": 10268276,
+        "names": ["default" ],
+        "lengths": [224145 ]
+      },      { "material": "material_0",
+        "attribRange": [6073024, 55296],
+        "indexRange": [6515392, 74573],
+        "bboxes": 10268282,
+        "names": ["default" ],
+        "lengths": [223719 ]
+      },      { "material": "material_0",
+        "attribRange": [6739111, 55294],
+        "indexRange": [7181463, 67697],
+        "bboxes": 10268288,
+        "names": ["default" ],
+        "lengths": [203091 ]
+      },      { "material": "material_0",
+        "attribRange": [7384554, 55294],
+        "indexRange": [7826906, 69670],
+        "bboxes": 10268294,
+        "names": ["default" ],
+        "lengths": [209010 ]
+      },      { "material": "material_0",
+        "attribRange": [8035916, 55294],
+        "indexRange": [8478268, 67704],
+        "bboxes": 10268300,
+        "names": ["default" ],
+        "lengths": [203112 ]
+      },      { "material": "material_0",
+        "attribRange": [8681380, 55294],
+        "indexRange": [9123732, 67707],
+        "bboxes": 10268306,
+        "names": ["default" ],
+        "lengths": [203121 ]
+      },      { "material": "material_0",
+        "attribRange": [9326853, 55294],
+        "indexRange": [9769205, 76262],
+        "bboxes": 10268312,
+        "names": ["default" ],
+        "lengths": [228786 ]
+      },      { "material": "material_0",
+        "attribRange": [9997991, 21624],
+        "indexRange": [10170983, 32415],
+        "bboxes": 10268318,
+        "names": ["default" ],
+        "lengths": [97245 ]
+      }    ]
+
+  }
+}

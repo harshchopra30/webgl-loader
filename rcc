@@ -1,0 +1,153 @@
+[1mdiff --git a/bin/README b/bin/README[m
+[1mdeleted file mode 100644[m
+[1mindex 6f2f5a6..0000000[m
+[1m--- a/bin/README[m
+[1m+++ /dev/null[m
+[36m@@ -1,11 +0,0 @@[m
+[31m-Use this directory as the place to build the binaries, but please[m
+[31m-don't check them in. I've added a few scripts to make things a bit[m
+[31m-easier, but I should migrate to make, soon.[m
+[31m-[m
+[31m-To build:[m
+[31m-[m
+[31m-$ ./build.sh[m
+[31m-[m
+[31m-To clean:[m
+[31m-[m
+[31m-$ ./clean.sh[m
+\ No newline at end of file[m
+[1mdiff --git a/bin/build.sh b/bin/build.sh[m
+[1mindex 9a6e28f..6562fd6 100755[m
+[1m--- a/bin/build.sh[m
+[1m+++ b/bin/build.sh[m
+[36m@@ -1,6 +1,7 @@[m
+ #!/bin/sh[m
+ #../src/objanalyze.cc[m
+ ../src/objcompress.cc[m
+[32m+[m[32m../src/obj2utf8.cc[m
+ ../src/testing/all_codepoints.cc[m
+ ../src/testing/good_codepoints.cc[m
+ ../src/testing/hex_sanity.cc[m
+[1mdiff --git a/samples/base.js b/samples/base.js[m
+[1mindex 49c7d8c..58e6cf4 100644[m
+[1m--- a/samples/base.js[m
+[1m+++ b/samples/base.js[m
+[36m@@ -22,8 +22,8 @@[m [mfunction preventDefaultAction(evt) {[m
+ [m
+ function preventSelection(dom) {[m
+   // TODO: Use PreventDefaultAction?[m
+[31m-  dom.onselectstart = never;[m
+[31m-  dom.onmousedown = never;[m
+[32m+[m[32m//   dom.onselectstart = never;[m
+[32m+[m[32m  // dom.onmousedown = never;[m
+ }[m
+ [m
+ function addListeners(dom, listeners) {[m
+[1mdiff --git a/samples/loader.js b/samples/loader.js[m
+[1mindex be34191..a0d107a 100644[m
+[1m--- a/samples/loader.js[m
+[1m+++ b/samples/loader.js[m
+[36m@@ -340,8 +340,10 @@[m [mfunction downloadModel(path, model, callback) {[m
+   downloadMeshes(path, model.urls, model.decodeParams, callback);[m
+ }[m
+ [m
+[32m+[m
+ function downloadModelJson(jsonUrl, decodeParams, callback) {[m
+   getJsonRequest(jsonUrl, function(loaded) {[m
+[32m+[m[32m    MATERIALS = loaded.materials;[m
+     downloadMeshes(jsonUrl.substr(0,jsonUrl.lastIndexOf("/")+1),[m
+                    loaded.urls, decodeParams, callback);[m
+   });[m
+[1mdiff --git a/samples/samples.js b/samples/samples.js[m
+[1mindex c5f0b1e..c0c2cab 100644[m
+[1m--- a/samples/samples.js[m
+[1m+++ b/samples/samples.js[m
+[36m@@ -69,6 +69,7 @@[m [maddWheelHandler(window, function(dx, dy, evt) {[m
+   return false;[m
+ });[m
+ [m
+[32m+[m[32mvar MATERIALS ;[m
+ function textureFromMaterial(gl, material, callback) {[m
+   try {[m
+     var url = MATERIALS[material].map_Kd;  // throw-y.[m
+[36m@@ -89,7 +90,8 @@[m [mfunction textureFromMaterial(gl, material, callback) {[m
+   }[m
+ }[m
+ [m
+[31m-function onLoad(attribArray, indexArray, bboxen, meshEntry) {[m
+[32m+[m[32mfunction onLoad1(attribArray, indexArray, bboxen, meshEntry) {[m
+[32m+[m
+   var texture = textureFromMaterial(gl, meshEntry.material, function() {[m
+     renderer.postRedisplay();[m
+   });[m
+[1mdiff --git a/src/objcompress.cc b/src/objcompress.cc[m
+[1mindex 808e219..351df99 100755[m
+[1m--- a/src/objcompress.cc[m
+[1m+++ b/src/objcompress.cc[m
+[36m@@ -23,23 +23,29 @@[m [mexit;[m
+ #include "stream.h"[m
+ [m
+ int main(int argc, const char* argv[]) {[m
+[31m-  if (argc != 3) {[m
+[32m+[m[32m  FILE* json_out = stdout;[m
+[32m+[m[32m  if (argc != 3 && argc != 4) {[m
+     fprintf(stderr, "Usage: %s in.obj out.utf8\n\n"[m
+             "\tCompress in.obj to out.utf8 and writes JS to STDOUT.\n\n",[m
+             argv[0]);[m
+     return -1;[m
+[32m+[m[32m  } else if (argc == 4) {[m
+[32m+[m[32m    json_out = fopen(argv[3], "w");[m
+[32m+[m[32m    CHECK(json_out != NULL);[m
+   }[m
+[32m+[m
+   FILE* fp = fopen(argv[1], "r");[m
+   WavefrontObjFile obj(fp);[m
+   fclose(fp);[m
+ [m
+[31m-  printf("MODELS[\'%s\'] = {\n", StripLeadingDir(argv[1]));[m
+[31m-  puts("  materials: {");[m
+[32m+[m[32m  fputs("{\n  \"materials\": {\n", json_out);[m
+   const MaterialList& materials = obj.materials();[m
+   for (size_t i = 0; i < materials.size(); ++i) {[m
+     materials[i].DumpJson();[m
+[32m+[m	[32mconst bool last = i == materials.size() - 1;[m
+[32m+[m[32m    fputs(",\n" + last, json_out);[m
+   }[m
+[31m-  puts("  },");[m
+[32m+[m[32m  fputs("  },\n", json_out);[m
+   [m
+   const MaterialBatches& batches = obj.material_batches();[m
+ [m
+[36m@@ -53,10 +59,9 @@[m [mint main(int argc, const char* argv[]) {[m
+   }[m
+   webgl_loader::BoundsParams bounds_params = [m
+     webgl_loader::BoundsParams::FromBounds(bounds);[m
+[31m-  printf("  decodeParams: ");[m
+[31m-  bounds_params.DumpJson();[m
+[31m-[m
+[31m-  puts("  urls: {");[m
+[32m+[m[32m   fputs("  \"decodeParams\": ", json_out);[m
+[32m+[m[32m  bounds_params.DumpJson(json_out);[m
+[32m+[m[32m  fputs(", \"urls\": {\n", json_out);[m
+   std::vector<char> utf8;[m
+   webgl_loader::VectorSink sink(&utf8);[m
+   // Pass 2: quantize, optimize, compress, report.[m
+[36m@@ -154,12 +159,15 @@[m [mint main(int argc, const char* argv[]) {[m
+       for (size_t k = 0; k < buffered_lengths.size(); ++k) {[m
+         printf(PRIuS ", ", buffered_lengths[k]);[m
+       }[m
+[31m-      puts("],\n      },");[m
+[32m+[m[41m     [m	[32mfputs("],\n      },", json_out);[m
+     }[m
+     fwrite(&utf8[0], 1, utf8.size(), out_fp);[m
+     fclose(out_fp);[m
+[31m-    puts("    ],");[m
+[32m+[m[32m    const bool last = (++iter == batches.end());[m
+[32m+[m[32m    fputs(",\n" + last, json_out);[m
+[32m+[m
+   }[m
+[31m-  puts("  }\n};");[m
+[32m+[m[32m  fputs("    ]\n", json_out);[m
+[32m+[m[32m  fputs("  }\n}", json_out);[m
+   return 0;[m
+ }[m

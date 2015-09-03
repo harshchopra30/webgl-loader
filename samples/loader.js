@@ -340,8 +340,10 @@ function downloadModel(path, model, callback) {
   downloadMeshes(path, model.urls, model.decodeParams, callback);
 }
 
+
 function downloadModelJson(jsonUrl, decodeParams, callback) {
   getJsonRequest(jsonUrl, function(loaded) {
+    MATERIALS = loaded.materials;
     downloadMeshes(jsonUrl.substr(0,jsonUrl.lastIndexOf("/")+1),
                    loaded.urls, decodeParams, callback);
   });

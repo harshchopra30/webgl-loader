@@ -22,8 +22,8 @@ function preventDefaultAction(evt) {
 
 function preventSelection(dom) {
   // TODO: Use PreventDefaultAction?
-  dom.onselectstart = never;
-  dom.onmousedown = never;
+//   dom.onselectstart = never;
+  // dom.onmousedown = never;
 }
 
 function addListeners(dom, listeners) {
@@ -111,6 +111,8 @@ function getHttpRequest(url, onload, opt_onprogress) {
 
 function getJsonRequest(url, onjson) {
   getHttpRequest(url,
-                 function(e) { onjson(JSON.parse(e.responseText)); },
+                 function(e) { 
+                  onjson(JSON.parse(e.responseText)); 
+                },
                  function() {});
 }

@@ -69,6 +69,7 @@ addWheelHandler(window, function(dx, dy, evt) {
   return false;
 });
 
+var MATERIALS ;
 function textureFromMaterial(gl, material, callback) {
   try {
     var url = MATERIALS[material].map_Kd;  // throw-y.
@@ -89,7 +90,8 @@ function textureFromMaterial(gl, material, callback) {
   }
 }
 
-function onLoad(attribArray, indexArray, bboxen, meshEntry) {
+function onLoad1(attribArray, indexArray, bboxen, meshEntry) {
+
   var texture = textureFromMaterial(gl, meshEntry.material, function() {
     renderer.postRedisplay();
   });
